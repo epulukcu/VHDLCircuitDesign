@@ -1,0 +1,21 @@
+--Karadeniz Technical University, Department of Computer Engineering
+--Digital Design Laboratory - VHDL Circuit Design, 8-bit Even Parity Control
+--Elif Pulukçu, 407602
+--05/20/2021
+
+library IEEE;
+use IEEE.std_logic_1164.all; --Packages of the library are included in the project
+
+entity Parity is
+	Port ( input : in STD_LOGIC_VECTOR (6 downto 0); --7-bit input
+		output : out STD_LOGIC_VECTOR (7 downto 0)); --8-bit output cause of parity bit
+	end Parity;
+
+architecture Behv of Parity is
+	signal temp: std_logic:='0';
+
+begin --Circuit elements and roles
+	temp <= input(0) xor input(1) xor input(2) xor input(3) xor input(4) xor input(5) xor input(6);
+	output <= input & temp;
+
+end Behv;
